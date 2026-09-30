@@ -10,25 +10,17 @@ export default {
         
         const submitTDS = new Date().toISOString();
         
-        const rayID =
-        request.headers.get("CF-Ray") || "";
+        const rayID = request.headers.get("CF-Ray") || "";
         
-        const originURL =
-        request.headers.get("Referer") ||
-        request.headers.get("Origin") ||
-        "";
+        const originURL = request.headers.get("Referer") || request.headers.get("Origin") || "";
         
-        const geoRegion =
-        request.cf?.region || "";
+        const geoRegion = request.cf?.region || "";
         
-        const geoCity =
-        request.cf?.city || "";
+        const geoCity = request.cf?.city || "";
         
-        const geoCountry =
-        request.cf?.country || "";
+        const geoCountry = request.cf?.country || "";
         
-        const deviceAgent =
-        request.headers.get("User-Agent") || "";
+        const deviceAgent = request.headers.get("User-Agent") || "";
         
         // ============================================================
         // CORS PREFLIGHT
@@ -41,8 +33,7 @@ export default {
             });
         }
         
-        const startedAt = 
-        Date.now();
+        const startedAt = Date.now();
         
         console.log(JSON.stringify({
             event: "request.accepted",
@@ -80,8 +71,7 @@ export default {
         // REQUIRE JSON
         // ============================================================
 
-        const contentType =
-        request.headers.get("Content-Type") || "";
+        const contentType = request.headers.get("Content-Type") || "";
     
         if (!contentType.toLowerCase().startsWith("application/json")) {
             console.warn(JSON.stringify({
@@ -138,20 +128,15 @@ export default {
         // MULTICONNECT FORM FIELDS
         // ============================================================
 
-        const formName =
-        String(payload["formmsg-submit.name"] || "").trim();
+        const formName = String(payload["formmsg-submit.name"] || "").trim();
 
-        const formEmail =
-        String(payload["formmsg-submit.email"] || "").trim();
+        const formEmail = String(payload["formmsg-submit.email"] || "").trim();
 
-        const formSubj =
-        String(payload["formmsg-submit.subj"] || "").trim();
+        const formSubj = String(payload["formmsg-submit.subj"] || "").trim();
 
-        const formBody =
-        String(payload["formmsg-submit.body"] || "").trim();
+        const formBody = String(payload["formmsg-submit.body"] || "").trim();
 
-        const formListSU =
-        payload["formmsg-submit.sub.genann"] === true;
+        const formListSU = payload["formmsg-submit.sub.genann"] === true;
 
         // ============================================================
         // BASIC FORM VALIDATION
@@ -231,11 +216,9 @@ export default {
             return ingestFailure(invocationGUID);
         }
     
-        const tokenResult =
-        await tokenResponse.json();
+        const tokenResult = await tokenResponse.json();
 
-        const accessToken =
-        tokenResult.access_token;
+        const accessToken = tokenResult.access_token;
     
         console.log(JSON.stringify({
             event: "graph.token.success",
@@ -305,8 +288,7 @@ export default {
         // CREATE SHAREPOINT LIST ITEM
         // ============================================================
 
-        const graphURL =
-        `https://graph.microsoft.com/v1.0/sites/${env.SPGraphSiteID}/lists/${env.SPGraphListID}/items`;
+        const graphURL = `https://graph.microsoft.com/v1.0/sites/${env.SPGraphSiteID}/lists/${env.SPGraphListID}/items`;
     
         let graphResponse;
     
@@ -340,8 +322,7 @@ export default {
             return ingestFailure(invocationGUID);
         }
     
-        const graphResponseText =
-        await graphResponse.text();
+        const graphResponseText = await graphResponse.text();
     
         if (!graphResponse.ok) {
             console.error(JSON.stringify({
@@ -373,7 +354,7 @@ export default {
     
         catch {
             // Graph already returned success.
-            // // Failure to parse its response does not invalidate the ingest.
+            // Failure to parse its response does not invalidate the ingest.
         }
         
         console.log(JSON.stringify({
@@ -419,7 +400,6 @@ function corsHeaders() {
     };
 }
 
-
 function jsonResponse(body, status) {
     return new Response(
         JSON.stringify(body),
@@ -433,13 +413,12 @@ function jsonResponse(body, status) {
     );
 }
 
-
 function ingestFailure(invocationGUID) {
     return jsonResponse(
         {
             success: false,
-        requestID: invocationGUID,
-        error: "Message ingest failed"
+            requestID: invocationGUID,
+            error: "Message ingest failed"
         },
         502
     );
