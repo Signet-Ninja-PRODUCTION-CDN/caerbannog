@@ -4,9 +4,9 @@
   "compatibility_date": "2026-10-06"
   "observability": {
       "logs": {
-      "enabled": true,
-      "invocation_logs": true,
-      "persist": true
-    }
+        "enabled": true,
+        "invocation_logs": true,
+        "persist": true
+      }
   },
 }
