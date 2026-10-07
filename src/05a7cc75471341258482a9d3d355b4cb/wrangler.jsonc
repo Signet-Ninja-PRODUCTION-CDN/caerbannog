@@ -1,12 +1,12 @@
 {
   "name": "caerbannog-05a7cc75471341258482a9d3d355b4cb",
   "main": "execute.js",
-  "compatibility_date": "2026-10-06"
+  "compatibility_date": "2026-10-06",
   "observability": {
       "logs": {
         "enabled": true,
         "invocation_logs": true,
         "persist": true
       }
-  },
+  }
 }
