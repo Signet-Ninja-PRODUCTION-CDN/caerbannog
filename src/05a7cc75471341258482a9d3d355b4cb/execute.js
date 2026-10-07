@@ -345,11 +345,11 @@ export default {
         // MULTICONNECT SUBSCRIPTION FORM FIELDS
         // ============================================================
 
-        const formName = String(payload["emlist-sub.jobopens.name"] || "").trim();
+        const formName = String(payload["emlist-sub.buildprog.name"] || "").trim();
 
-        const formEmail = String(payload["emlist-sub.jobopens.email"] || "").trim();
+        const formEmail = String(payload["emlist-sub.buildprog.email"] || "").trim();
 
-        const formConsentCheck = payload["emlist-sub.jobopens"] === true;
+        const formConsentCheck = payload["emlist-sub.buildprog"] === true;
 
         // ============================================================
         // BASIC FORM VALIDATION
