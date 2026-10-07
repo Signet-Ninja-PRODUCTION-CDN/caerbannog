@@ -449,7 +449,7 @@ export default {
         const graphBody = {
             fields: {
                 Title:
-                "Job Opening Announcement Email Subscription",
+                "Platform Build Progress Email Subscription",
             
                 ingest_cfworkerInvokeGUID:
                 invocationGUID,
