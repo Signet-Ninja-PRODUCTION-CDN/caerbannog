@@ -345,25 +345,25 @@ export default {
         // MULTICONNECT SUBSCRIPTION FORM FIELDS
         // ============================================================
 
-        const formEmail = String(payload["emlist-sub.newprods.email"] || "").trim();
+        const formEmail = String(payload["emlist-unsub.email"] || "").trim();
 
-        const formUnsubALL = payload["emlist-sub.newprods"] === true;
+        const formUnsubALL = payload["emlist-unsub.all"] === true;
 
-        const formUnsubPolupann = payload["emlist-sub.newprods"] === true;
+        const formUnsubPolupann = payload["emlist-unsub.polupann"] === true;
 
-        const formUnsubGenemnl = payload["emlist-sub.newprods"] === true;
+        const formUnsubGenemnl = payload["emlist-unsub.genemnl"] === true;
 
-        const formUnsubBuildprog = payload["emlist-sub.newprods"] === true;
+        const formUnsubBuildprog = payload["emlist-unsub.buildprog"] === true;
 
-        const formUnsubPlatupann= payload["emlist-sub.newprods"] === true;
+        const formUnsubPlatupann= payload["emlist-unsub.platupann"] === true;
 
-        const formUnsubJobopens = payload["emlist-sub.newprods"] === true;
+        const formUnsubJobopens = payload["emlist-unsub.jobopens"] === true;
 
-        const formUnsubNewprods = payload["emlist-sub.newprods"] === true;
+        const formUnsubNewprods = payload["emlist-unsub.newprods"] === true;
 
-        const formUnsubEvents = payload["emlist-sub.newprods"] === true;
+        const formUnsubEvents = payload["emlist-unsub.events"] === true;
 
-        const formConsentCheck = payload["emlist-sub.newprods"] === true;
+        const formConsentCheck = payload["emlist-unsub"] === true;
 
         // ============================================================
         // BASIC FORM VALIDATION
@@ -463,7 +463,7 @@ export default {
         const graphBody = {
             fields: {
                 Title:
-                "Product & Service Announcement Email Subscription",
+                "Email Unsubscribe Request Submission",
             
                 ingest_cfworkerInvokeGUID:
                 invocationGUID,
@@ -491,16 +491,33 @@ export default {
             
                 ingest_FormEmail:
                 formEmail,
+
+                ingest_FormUnsubALL:
+                formUnsubALL,
+
+                ingest_FormUnsubPolupann:
+                formUnsubPolupann,
+
+                ingest_FormUnsubGenemnl:
+                formUnsubGenemnl,
+
+                ingest_FormUnsubBuildprog:
+                formUnsubBuildprog,
+
+                ingest_FormUnsubPlatupann:
+                formUnsubPlatupann,
             
-                ingest_FormName:
-                formName,
+                ingest_FormUnsubJobopens:
+                formUnsubJobopens,
+
+                ingest_FormUnsubNewprods:
+                formUnsubNewprods,
+
+                ingest_FormUnsubEvents:
+                formUnsubEvents,
             
                 ingest_FormConsentCheck:
                 formConsentCheck,
-            
-                // Reserved for Future Utilization
-                // // ingest_SPRecordGUID:
-                // // ingest_SPRecordStat:
             
             }
         };
