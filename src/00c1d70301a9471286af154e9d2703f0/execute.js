@@ -369,7 +369,7 @@ export default {
         // BASIC FORM VALIDATION
         // ============================================================
 
-        if (!formName || !formEmail) {
+        if (!formEmail) {
             console.warn(JSON.stringify({
                 event: "request.rejected",
                 requestID: invocationGUID,
